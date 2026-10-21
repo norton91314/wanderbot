@@ -3,7 +3,7 @@
   <name>wanderbot</name>
   <version>0.0.0</version>
   <description>Quadruped-friendly wanderbot FSM with random sit/stand transitions.</description>
-  <maintainer email="you@example.com">Your Name</maintainer>
+  <maintainer email="norton91314@gmail.com">norton91314</maintainer>
   <license>Apache-2.0</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
