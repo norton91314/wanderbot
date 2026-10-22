@@ -40,6 +40,11 @@ add_library(wanderbot_motion_plugin SHARED
   src/gazebo/wanderbot_motion_plugin.cpp
 )
 
+ament_target_dependencies(wanderbot_motion_plugin
+  rclcpp
+  geometry_msgs
+)
+
 target_link_libraries(wanderbot_motion_plugin
   gazebo
 )
