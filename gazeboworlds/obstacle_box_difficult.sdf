@@ -17,6 +17,7 @@
 
     <model name="wanderbot">
       <pose>0 0 0.3 0 0 0</pose>
+
       <link name="base_link">
         <inertial>
           <mass>1.0</mass>
@@ -29,6 +30,7 @@
             <izz>0.166667</izz>
           </inertia>
         </inertial>
+
         <collision name="body_collision">
           <geometry>
             <box>
@@ -36,6 +38,7 @@
             </box>
           </geometry>
         </collision>
+
         <visual name="body_visual">
           <geometry>
             <box>
@@ -47,6 +50,7 @@
             <diffuse>0.2 0.8 0.2 1</diffuse>
           </material>
         </visual>
+
         <sensor name="laser" type="ray">
           <always_on>true</always_on>
           <visualize>true</visualize>
@@ -75,6 +79,112 @@
           </plugin>
         </sensor>
       </link>
+
+      <link name="left_wheel">
+        <pose>0 0.35 0.10 1.57079632679 0 0</pose>
+        <inertial>
+          <mass>0.1</mass>
+          <inertia>
+            <ixx>0.0001</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.0001</iyy>
+            <iyz>0</iyz>
+            <izz>0.0001</izz>
+          </inertia>
+        </inertial>
+        <collision name="left_wheel_collision">
+          <geometry>
+            <cylinder>
+              <radius>0.12</radius>
+              <length>0.08</length>
+            </cylinder>
+          </geometry>
+        </collision>
+        <visual name="left_wheel_visual">
+          <geometry>
+            <cylinder>
+              <radius>0.12</radius>
+              <length>0.08</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>0.1 0.1 0.1 1</ambient>
+            <diffuse>0.1 0.1 0.1 1</diffuse>
+          </material>
+        </visual>
+      </link>
+
+      <link name="right_wheel">
+        <pose>0 -0.35 0.10 1.57079632679 0 0</pose>
+        <inertial>
+          <mass>0.1</mass>
+          <inertia>
+            <ixx>0.0001</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.0001</iyy>
+            <iyz>0</iyz>
+            <izz>0.0001</izz>
+          </inertia>
+        </inertial>
+        <collision name="right_wheel_collision">
+          <geometry>
+            <cylinder>
+              <radius>0.12</radius>
+              <length>0.08</length>
+            </cylinder>
+          </geometry>
+        </collision>
+        <visual name="right_wheel_visual">
+          <geometry>
+            <cylinder>
+              <radius>0.12</radius>
+              <length>0.08</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>0.1 0.1 0.1 1</ambient>
+            <diffuse>0.1 0.1 0.1 1</diffuse>
+          </material>
+        </visual>
+      </link>
+
+      <joint name="left_wheel_joint" type="continuous">
+        <parent>base_link</parent>
+        <child>left_wheel</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+        </axis>
+        <origin xyz="0 0.35 0.10" rpy="0 0 0"/>
+      </joint>
+
+      <joint name="right_wheel_joint" type="continuous">
+        <parent>base_link</parent>
+        <child>right_wheel</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+        </axis>
+        <origin xyz="0 -0.35 0.10" rpy="0 0 0"/>
+      </joint>
+
+      <plugin name="gazebo_ros_diff_drive" filename="libgazebo_ros_diff_drive.so">
+        <ros>
+          <namespace>/</namespace>
+          <argument>cmd_vel:=cmd_vel</argument>
+        </ros>
+        <update_rate>50</update_rate>
+        <left_joint>left_wheel_joint</left_joint>
+        <right_joint>right_wheel_joint</right_joint>
+        <wheel_separation>0.70</wheel_separation>
+        <wheel_diameter>0.24</wheel_diameter>
+        <max_wheel_torque>20</max_wheel_torque>
+        <max_wheel_acceleration>1.0</max_wheel_acceleration>
+        <publish_odom>true</publish_odom>
+        <publish_odom_tf>true</publish_odom_tf>
+        <odometry_frame>odom</odometry_frame>
+        <robot_base_frame>base_link</robot_base_frame>
+      </plugin>
     </model>
 
     <model name="obstacle_box_1">
