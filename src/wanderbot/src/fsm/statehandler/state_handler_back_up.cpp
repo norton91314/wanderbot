@@ -4,12 +4,12 @@ Action StateHandlerBackUp::act(
   const Config & config, const double seconds_in_this_state,
   const Vector & vector_to_obstacle) const
 {
+  (void)vector_to_obstacle;
+
+  // Back away briefly when an obstacle is detected, then return to forward motion.
+  // This prevents the robot from getting stuck in a repeated BACK_UP loop.
   if (seconds_in_this_state < config.getBackUpDurationSeconds()) {
     return Action(Velocity(-config.getBackUpVelocity(), 0.0), State::BACK_UP);
-  }
-
-  if (vector_to_obstacle.getMagnitude() < config.getObstacleMinimumSafeDistance()) {
-    return Action(Velocity(0.0, config.getChangeDirectionSpinVelocity()), State::CHANGE_DIRECTION);
   }
 
   return Action(Velocity::create_stopped(), State::GO);
