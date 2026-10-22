@@ -63,4 +63,8 @@ install(DIRECTORY launch
   DESTINATION share/${PROJECT_NAME}
 )
 
+install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/../gazeboworlds
+  DESTINATION share
+)
+
 ament_package()
