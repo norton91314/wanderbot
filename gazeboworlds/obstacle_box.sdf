@@ -85,19 +85,19 @@
 
     <model name="fence_north">
       <static>true</static>
-      <pose>0 1.55 0.25 0 0 0</pose>
+      <pose>0 5.05 0.25 0 0 0</pose>
       <link name="link">
         <collision name="collision">
           <geometry>
             <box>
-              <size>3.2 0.1 0.5</size>
+              <size>10.2 0.1 0.5</size>
             </box>
           </geometry>
         </collision>
         <visual name="visual">
           <geometry>
             <box>
-              <size>3.2 0.1 0.5</size>
+              <size>10.2 0.1 0.5</size>
             </box>
           </geometry>
           <material>
@@ -110,19 +110,19 @@
 
     <model name="fence_south">
       <static>true</static>
-      <pose>0 -1.55 0.25 0 0 0</pose>
+      <pose>0 -5.05 0.25 0 0 0</pose>
       <link name="link">
         <collision name="collision">
           <geometry>
             <box>
-              <size>3.2 0.1 0.5</size>
+              <size>10.2 0.1 0.5</size>
             </box>
           </geometry>
         </collision>
         <visual name="visual">
           <geometry>
             <box>
-              <size>3.2 0.1 0.5</size>
+              <size>10.2 0.1 0.5</size>
             </box>
           </geometry>
           <material>
@@ -135,19 +135,19 @@
 
     <model name="fence_east">
       <static>true</static>
-      <pose>1.55 0 0.25 0 0 0</pose>
+      <pose>5.05 0 0.25 0 0 0</pose>
       <link name="link">
         <collision name="collision">
           <geometry>
             <box>
-              <size>0.1 3.2 0.5</size>
+              <size>0.1 10.2 0.5</size>
             </box>
           </geometry>
         </collision>
         <visual name="visual">
           <geometry>
             <box>
-              <size>0.1 3.2 0.5</size>
+              <size>0.1 10.2 0.5</size>
             </box>
           </geometry>
           <material>
@@ -160,19 +160,19 @@
 
     <model name="fence_west">
       <static>true</static>
-      <pose>-1.55 0 0.25 0 0 0</pose>
+      <pose>-5.05 0 0.25 0 0 0</pose>
       <link name="link">
         <collision name="collision">
           <geometry>
             <box>
-              <size>0.1 3.2 0.5</size>
+              <size>0.1 10.2 0.5</size>
             </box>
           </geometry>
         </collision>
         <visual name="visual">
           <geometry>
             <box>
-              <size>0.1 3.2 0.5</size>
+              <size>0.1 10.2 0.5</size>
             </box>
           </geometry>
           <material>
@@ -184,7 +184,7 @@
     </model>
 
     <model name="obstacle_box">
-      <pose>1.2 0.0 0.25 0 0 0</pose>
+      <pose>2.0 0.0 0.25 0 0 0</pose>
       <static>true</static>
       <link name="link">
         <collision name="collision">
