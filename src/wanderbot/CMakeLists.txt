@@ -9,6 +9,7 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(sensor_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
+find_package(gazebo REQUIRED)
 
 include_directories(include)
 
@@ -35,6 +36,19 @@ ament_target_dependencies(wanderbot_lib
   geometry_msgs
 )
 
+add_library(wanderbot_motion_plugin SHARED
+  src/gazebo/wanderbot_motion_plugin.cpp
+)
+
+target_link_libraries(wanderbot_motion_plugin
+  gazebo
+)
+
+target_include_directories(wanderbot_motion_plugin PRIVATE
+  ${GAZEBO_INCLUDE_DIRS}
+  include
+)
+
 add_executable(wanderbot_node
   src/ros2/wanderbot_node.cpp
 )
@@ -49,7 +63,7 @@ target_link_libraries(wanderbot_node wanderbot_lib)
 
 target_include_directories(wanderbot_node PRIVATE include)
 
-install(TARGETS wanderbot_lib wanderbot_node
+install(TARGETS wanderbot_lib wanderbot_node wanderbot_motion_plugin
   ARCHIVE DESTINATION lib
   LIBRARY DESTINATION lib
   RUNTIME DESTINATION lib/${PROJECT_NAME}
