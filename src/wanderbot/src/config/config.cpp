@@ -1,14 +1,14 @@
 #include "wanderbot/config/config.hpp"
 
 const double Config::VFF_MINIMUM_IGNORABLE_DISTANCE_ = 0.2;
-const double Config::OBSTACLE_MINIMUM_SAFE_DISTANCE_ = 1.0;
+const double Config::OBSTACLE_MINIMUM_SAFE_DISTANCE_ = 2.0;
 const double Config::THROTTLE_SETTING_FORWARD_ = 1.0;
 const double Config::THROTTLE_SETTING_YAW_ = 1.0;
 const double Config::MAX_FORWARD_VELOCITY_ = 1.0;
 const double Config::MAX_YAW_ = 1.0;
 const double Config::BACK_UP_VELOCITY_ = 0.5;
 const double Config::CHANGE_DIRECTION_SPIN_VELOCITY_ = 0.8;
-const double Config::BACK_UP_SECONDS_ = 1.0;
+const double Config::BACK_UP_SECONDS_ = 0.5;
 const double Config::SPIN_SECONDS_ = 1.0;
 
 double Config::getVffMinimumIgnorableDistance() const {return VFF_MINIMUM_IGNORABLE_DISTANCE_;}
