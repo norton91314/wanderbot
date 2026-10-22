@@ -38,10 +38,7 @@ public:
 
   void OnUpdate(const common::UpdateInfo &)
   {
-    if (executor_) {
-      executor_->spin_once(std::chrono::milliseconds(1));
-    }
-
+    // Do not call spin_once() here because the executor is already running in its own thread.
     model_->SetLinearVel(ignition::math::Vector3d(last_cmd_.linear.x, 0.0, 0.0));
     model_->SetAngularVel(ignition::math::Vector3d(0.0, 0.0, last_cmd_.angular.z));
   }
